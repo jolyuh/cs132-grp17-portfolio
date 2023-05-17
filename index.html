@@ -162,35 +162,48 @@
 								<header class="major">
 									<h2>We mined the internet for fake news data.</h2>
 								</header>
-								<p class="long-text">We manually collected the data from Twitter. The data was collected on March 22, 2023, to April 19, 2023. The tweet is selected to be in the data set if the tweet explicitly or implicitly says that Anakbayan is a terrorist group. The keywords that we used are "Anakbayan, NPA,  CPP-NPA, communist, komunista, terorista, terrorist". Moreover, the tweets that we collected were from January 2016 to December 2022. For this project, we collected 150 samples. The data features that we added were Marcos supporter, Duterte supporter, and an Explanation of the political stance. The column Marcos supporter and Duterte supporter were added to determine whether the user is a Marcos supporter or Duterte supporter, respectively. A column for a short explanation of why we categorized them as Marcos or Duterte supporters was also added. We scanned thru the user's account and we look for any tweets, retweets, or likes in support of the said parties.</p>
+								<p class="long-text">We manually collected the data from Twitter. The data was collected from March 22, 2023, to April 19, 2023. The keywords that we used to search for tweets are "Anakbayan, NPA,  CPP-NPA, communist, komunista, terorista, terrorist". The tweet is selected to be in the data set if the tweet explicitly or implicitly says that Anakbayan is a terrorist group. We considered both standalone tweets and replies to tweets or threads. Moreover, the tweets that we collected were from January 2016 to December 2022. For this project, we collected 150 samples. The data features that we have notably added was data on their political leaning (whether they supported President Marcos and/or former President Duterte) by browsing their profile history, looking for any tweets, retweets, or likes in support of the said parties. A detailed rundown of our data features is below.</p>
+								<h2>Data Features</h2>
 								<ul class="statistics">
-									<li class="style1">
-										<span class="icon solid fa-code-branch"></span>
-										<strong>5,120</strong> Etiam
-									</li>
 									<li class="style2">
-										<span class="icon fa-folder-open"></span>
-										<strong>8,192</strong> Magna
+										<span class="icon brands fa-twitter"></span>
+										<strong>Tweet Info</strong> Our data logs the tweet's contents, its metadata, and why we considered it to contain disinformation. 
+										<hr/>
+										<ul class="itemization">
+											<li>Date posted</li>
+											<li>Tweet contents</li>
+											<li>Type of tweet (Text, Image, Video, URL, Reply)</li>
+											<li>Content type (Rational, Emotional, Transactional)</li>
+											<li>Engagement (Likes, Replies, Retweets, Quote Tweets, Views)</li>
+											<li>Reason for marking as disinformation</li>
+										</ul>
 									</li>
 									<li class="style3">
-										<span class="icon solid fa-signal"></span>
-										<strong>2,048</strong> Tempus
+										<span class="icon solid fa-user"></span>
+										<strong>Account Info</strong> We also collected the account information of the respective posters of each tweet.
+										<hr/>
+										<ul class="itemization">
+											<li>Account handle (@username)</li>
+											<li>Account name</li>
+											<li>Account bio</li>
+											<li>Account type (Identified, Media, Anonymous)</li>
+											<li>Date joined</li>
+											<li>Following</li>
+											<li>Followers</li>
+											<li>Location</li>
+										</ul>
 									</li>
 									<li class="style4">
-										<span class="icon solid fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
-									</li>
-									<li class="style5">
-										<span class="icon fa-gem"></span>
-										<strong>1,024</strong> Nullam
+										<span class="icon solid fa-vote-yea"></span>
+										<strong>Political Info</strong> We added flags to indicate whether the user is a Marcos supporter or Duterte supporter.
+										<hr/>
+										<ul class="itemization">
+											<li>Marcos supporter</li>
+											<li>Duterte supporter</li>
+											<li>Explanation for the political stance</li>
+										</ul>
 									</li>
 								</ul>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
 							</section>
 						
 						<!-- Methodology -->
