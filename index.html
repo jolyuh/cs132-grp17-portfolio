@@ -208,13 +208,45 @@
 							<section id="methodology" class="main special">
 								<header class="major">
 									<h2>Let's talk about our data science methodology.</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
 								</header>
+								<div class="long-text">
+									<p>
+										To start off, we trimmed off the columns of our data that we wouldn't be needing to perform any analyses. These were the "meta" columns - columns like "ID", "Review", "Group". We only needed them for collaboration in the classroom.
+									</p>
+									<p>
+										Then, we cleaned up the data by going through all the null values. In particular, though, we didn't have to handle <em>all</em> null values because not all values are required nor available. For example, a Twitter account is not required to have a Location or an Account bio, which would mean those fields would be null in the dataset and that's normal. So in our inital search, only the following columns had null values that needed to be filled: Account name, Content type, Likes, Replies, Quote Tweets, and Explanation for the political stance. These values were re-checked and filled in place.
+									</p>
+									<p>
+										We also had to go through all the invalid entries. We had a problem with the Date posted field in particular. With <code>datetime</code> though, we standardized the entire column to be datetime objects instead of strings.
+									</p>
+									<pre class="align-left">
+def get_date_slice(date):
+  date_arr = date.split('/')
+  return list(map(lambda x: int(x), date_arr))
+
+def get_time_slice(time):
+  time_arr = time.split(':')
+  return list(map(lambda x: int(x), time_arr))
+
+def get_datetime_from_str(date_str):
+  if isinstance(date_str, datetime):
+    return date_str
+  
+  split_date_time = date_str.split(' ')
+
+  date = get_date_slice(split_date_time[0])
+  time = get_time_slice(split_date_time[1])
+
+  return datetime(2000 + date[2], date[1], date[0], time[0], time[1])
+
+tweets_test = tweets['Date posted'].map(get_datetime_from_str)
+tweets['Date posted'] = tweets_test
+tweets['Date posted']
+									</pre>
+								</div>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
+										<li><a href="https://colab.research.google.com/drive/1n1JBBvMl2z5nt_XG2Loe-vcAOqUgMreH" class="button primary">View the full notebook</a></li>
 									</ul>
 								</footer>
 							</section>
