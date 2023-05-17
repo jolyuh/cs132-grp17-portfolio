@@ -202,13 +202,10 @@
 										</ul>
 									</li>
 								</ul>
-							</section>
-						
-						<!-- Methodology -->
-							<section id="methodology" class="main special">
-								<header class="major">
-									<h2>Let's talk about our data science methodology.</h2>
-								</header>
+
+								<br /><br />
+								<h2>Data Preprocessing</h2>
+
 								<div class="long-text">
 									<p>
 										To start off, we trimmed off the columns of our data that we wouldn't be needing to perform any analyses. These were the "meta" columns - columns like "ID", "Review", "Group". We only needed them for collaboration in the classroom.
@@ -219,36 +216,37 @@
 									<p>
 										We also had to go through all the invalid entries. We had a problem with the Date posted field in particular. With <code>datetime</code> though, we standardized the entire column to be datetime objects instead of strings.
 									</p>
-									<pre class="align-left">
-def get_date_slice(date):
-  date_arr = date.split('/')
-  return list(map(lambda x: int(x), date_arr))
-
-def get_time_slice(time):
-  time_arr = time.split(':')
-  return list(map(lambda x: int(x), time_arr))
-
-def get_datetime_from_str(date_str):
-  if isinstance(date_str, datetime):
-    return date_str
-  
-  split_date_time = date_str.split(' ')
-
-  date = get_date_slice(split_date_time[0])
-  time = get_time_slice(split_date_time[1])
-
-  return datetime(2000 + date[2], date[1], date[0], time[0], time[1])
-
-tweets_test = tweets['Date posted'].map(get_datetime_from_str)
-tweets['Date posted'] = tweets_test
-tweets['Date posted']
-									</pre>
+									<p>
+										Lastly, since our dataset had the values for political affiliation (<code>Marcos supporter</code> or <code>Duterte supporter</code>) as <code>boolean</code> values,
+										we encoded our data to instead read these values as <code>1</code> for <code>True</code> and <code>0</code> for <code>False</code>.
+									</p>
 								</div>
+
+								<br /><br />
+								<h2>Data Visualization</h2>
+
+								<div class="long-text">
+									<p>
+										For our data visualization, we utilized the <code>plotly</code> library to create interactive charts of the distributions of content type, political stance, and number
+										of redtagging tweets per date posted. Notably, we used a heatmap to visualize the number of tweets per date posted so that we would be able to easily explain the 
+										correlation of redtagging behavior based on current events at a certain period of time. Our findings are discussed more in our Python notebook.
+									</p>
+								</div>
+
+								<pp>To see our data exploration in more detail, you may check the full Python notebook in the following page:</p>
+
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="https://colab.research.google.com/drive/1n1JBBvMl2z5nt_XG2Loe-vcAOqUgMreH" class="button primary">View the full notebook</a></li>
+										<li><a href="notebook.html" class="button primary">View the full notebook</a></li>
 									</ul>
 								</footer>
+							</section>
+						
+						<!-- Methodology -->
+							<section id="methodology" class="main special">
+								<header class="major">
+									<h2>Let's talk about our data science methodology.</h2>
+								</header>
 							</section>
 						
 						<!-- Results -->
