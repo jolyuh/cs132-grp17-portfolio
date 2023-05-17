@@ -3111,6 +3111,7 @@ input, select, textarea {
 					flex: 0 1 auto;
 					margin-left: 0;
 					margin-bottom: 2em;
+					alig
 				}
 
 		}
@@ -3176,7 +3177,6 @@ input, select, textarea {
 				-webkit-transition-delay: 0s;
 				-ms-transition-delay: 0s;
 				transition-delay: 0s;
-				display: block;
 				margin: 0 0 1.5em 0;
 			}
 
@@ -3206,6 +3206,10 @@ input, select, textarea {
 
 				#header.alt {
 					padding: 5em 3em 2em 3em ;
+				}
+
+				#header.alt .logo {
+					display: none;
 				}
 
 		}
