@@ -291,15 +291,6 @@
 								</div>
 
 								<br /><br />
-								<h2>Data Visualization</h2>
-
-								<div class="long-text">
-									<p>
-										For our data visualization, we utilized the <code>plotly</code> library to create interactive charts of the distributions of content type, political stance, and number
-										of redtagging tweets per date posted. Notably, we used a heatmap to visualize the number of tweets per date posted so that we would be able to easily explain the 
-										correlation of redtagging behavior based on current events at a certain period of time. Our findings are discussed more in our Python notebook.
-									</p>
-								</div>
 
 								<pp>To see our data exploration in more detail, you may check the full Python notebook in the following page:</p>
 
@@ -321,16 +312,29 @@
 							<section id="results" class="main special">
 								<header class="major">
 									<h2>Here's what we found out.</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
 								</header>
-								<iframe width="900" height="500" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/1.embed"></iframe>
-								<iframe width="900" height="500" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/5.embed"></iframe>
-								<iframe width="900" height="500" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/7.embed"></iframe>
+								<h3>Data Visualization</h2>
+
+								<div class="long-text">
+									<p>
+										We wanted to see if our data revealed any patterns, so we utilized the <code>plotly</code> library to create interactive charts. Of the charts we made, we're sharing our most insightful graphs here.
+									</p>
+									<iframe width="900" height="500" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/1.embed"></iframe>
+									<p>
+										We found that, of our 252 tweets, the majority of the tweets - <strong>45.6%</strong> - supported neither Marcos nor Duterte. The next most common stance was to support both Marcos and Duterte, which comprised <strong>40.1%</strong> of the tweets. This number combines all types of tweets together, so we decided to group the tweets further depending on the content of the tweet.
+									</p>
+									<iframe width="900" height="500" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/5.embed"></iframe>
+									<p>
+										When divided by whether or not the tweet contained red-tagging, we found that of the 131 red-tagging tweets, <strong>70.23%</strong> of the tweeters were supporters of both Marcos and Duterte. On the other hand, of 121 non-red-tagging tweets, <strong>90.08%</strong> were tweeted by supporters of neither. Notably, the accounts that support neither include official Anakbayan accounts and accounts of Anakbayan members.
+									</p>
+									<iframe width="900" height="500" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/7.embed"></iframe>
+									<p>
+										<strong>99.07%</strong> of non-negative tweets were tweeted by supporters of neither. There is only one neutral tweet tweeted by a supporter of both; all the remaining tweets are negative. <strong>69.44%</strong> of negative tweets were tweeted by supporters of both.
+									</p>
+								</div>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
+										<li><a href="notebook.html#Visualizing-the-data" class="button primary">View more graphs</a></li>
 									</ul>
 								</footer>
 							</section>
