@@ -306,6 +306,19 @@
 								<header class="major">
 									<h2>Let's talk about our data science methodology.</h2>
 								</header>
+								<div class="long-text">
+									<p>For our statistical, we chose the <strong>chi-square test for independence</strong>. Our hypothesis deals with categorical (i.e. non-numerical) data, thus we needed a non-parametric test to show if there is a relationship between the red-tagging of tweets and the political stance of the tweeter.</p>
+									<p>The test requires a few things to be valid [<a href="https://www.jmp.com/en_ph/statistics-knowledge-portal/chi-square-test/chi-square-test-of-independence.html">11</a>], and we'll explain how we fulfill these requirements:</p>
+
+									<p>
+										<ul>
+											<li>"Data values that are a <strong>simple random sample</strong> from the population of interest" - We did what was possible within our power to randomly sample tweets from 2020 to 2022; in phase 2 we had collected thousands of tweets from that time frame then selected random tweets to reach 252 total tweets. We are however limited by the Twitter search algorithm and Twitter's search API.</li>
+											<li>"Two <strong>categorical or nominal</strong> variables." - We are indeed using categorical variables; the only quantitative value is the count of each value. </li>
+											<li>"For each combination of the levels of the two variables, we need at least five expected values."</li>
+										</ul>
+									</p>
+
+								</div>
 							</section>
 						
 						<!-- Results -->
