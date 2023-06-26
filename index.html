@@ -161,25 +161,58 @@
 								<header class="major">
 									<h2>We mined the internet for fake news data.</h2>
 								</header>
-								<p class="long-text">We manually collected the data from Twitter. The data was collected from March 22, 2023, to April 19, 2023. The keywords that we used to search for tweets are "Anakbayan, NPA,  CPP-NPA, communist, komunista, terorista, terrorist". The tweet is selected to be in the data set if the tweet explicitly or implicitly says that Anakbayan is a terrorist group. We considered both standalone tweets and replies to tweets or threads. Moreover, the tweets that we collected were from January 2016 to December 2022. For this project, we collected 150 samples. The data features that we have notably added was data on their political leaning (whether they supported President Marcos and/or former President Duterte) by browsing their profile history, looking for any tweets, retweets, or likes in support of the said parties. A detailed rundown of our data features is below.</p>
+								<p class="long-text">
+									Our data collection was conducted in two phases:
+									<ul>
+										<li>
+											Phase 1: Initial data collection using a combination of manual search via Twitter's advanced search feature and scraping data with the assistance of Apify's
+											<a href="https://apify.com/quacker/twitter-scraper">Twitter Scraper</a> actor. In this phase, we only collected tweets that contained red-tagging. Both standalone
+											tweets and replies were included.
+
+											<ul>
+												<li>Number of tweets collected: 150</li>
+												<li>Date range of collected tweets: January 2016 to December 2022</li>
+												<li>Keywords: Anakbayan, NPA, CPP-NPA, communist, terrorist, komunista, terorista</li>
+											</ul>
+										</li>
+										<li>
+											Phase 2: Collection of additional data using the <a href="https://github.com/JustAnotherArchivist/snscrape"><code>snscrape</code> library</a>. We collected tweets
+											that mention Anakbayan in general during this phase. Just like the previous phase, standalone tweets and replies were both considered.
+
+											<ul>
+												<li>Number of tweets collected: 126</li>
+												<li>Date range of collected tweets: January 2020 to December 2022</li>
+												<li>Keywords: Anakbayan</li>
+											</ul>
+										</li>
+									</ul>
+								</p>
+								<p class="long-text">
+									The data features that we have notably added was data on their political leaning (whether they supported President Marcos and/or former President Duterte) by browsing their profile history,
+									looking for any tweets, retweets, or likes in support of the said parties. A detailed rundown of our data features is below.
+								</p>
 								<h2>Data Features</h2>
 								<ul class="statistics">
 									<li class="style2">
-										<span class="icon brands fa-twitter"></span>
-										<strong>Tweet Info</strong> Our data logs the tweet's contents, its metadata, and why we considered it to contain disinformation. 
+										<div class="data-feature-category">
+											<span class="icon brands fa-twitter"></span>
+											<strong>Tweet Info</strong> Our data logs the tweet's contents, its metadata, and why we considered it to contain disinformation. 
+										</div>
 										<hr/>
 										<ul class="itemization">
 											<li>Date posted</li>
 											<li>Tweet contents</li>
 											<li>Type of tweet (Text, Image, Video, URL, Reply)</li>
 											<li>Content type (Rational, Emotional, Transactional)</li>
-											<li>Engagement (Likes, Replies, Retweets, Quote Tweets, Views)</li>
+											<li>Engagement (Likes, Replies, Retweets, Quote Tweets)</li>
 											<li>Reason for marking as disinformation</li>
 										</ul>
 									</li>
 									<li class="style3">
-										<span class="icon solid fa-user"></span>
-										<strong>Account Info</strong> We also collected the account information of the respective posters of each tweet.
+										<div class="data-feature-category">
+											<span class="icon solid fa-user"></span>
+											<strong>Account Info</strong> We also collected the account information of the respective posters of each tweet.
+										</div>
 										<hr/>
 										<ul class="itemization">
 											<li>Account handle (@username)</li>
@@ -193,13 +226,17 @@
 										</ul>
 									</li>
 									<li class="style4">
-										<span class="icon solid fa-vote-yea"></span>
-										<strong>Political Info</strong> We added flags to indicate whether the user is a Marcos supporter or Duterte supporter.
+										<div class="data-feature-category">
+											<span class="icon solid fa-vote-yea"></span>
+											<strong>Political Info</strong> We added flags to indicate (a) whether the user is a Marcos supporter or Duterte supporter and (b) their attitude towards Anakbayan.
+										</div>
 										<hr/>
 										<ul class="itemization">
 											<li>Marcos supporter</li>
 											<li>Duterte supporter</li>
 											<li>Explanation for the political stance</li>
+											<li>Red-tagging</li>
+											<li>Tone (Positive, Negative, Neutral)</li>
 										</ul>
 									</li>
 								</ul>
