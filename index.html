@@ -46,17 +46,21 @@
 							<section id="intro" class="main">
 								<div class="spotlight">
 									<div class="content">
-										<header class="major">
-											<h2>Hi. We are <strong>DAPper.</strong></h2>
-										</header>
-										<p>
-											And this is our project, <strong>Forget About The Red Tag</strong>. This is a project that aims to counter the negative propaganda being spread against the youth organization Anakbayan, particularly through tweets containing misinformation against them through the insights we can gain through data science.
-										</p>
-										<ul class="actions">
-											<li><a href="#overview" class="button">Learn More</a></li>
-										</ul>
+										<img style="width: 15em" src="images/logo.png" alt="" />
+										<div class="intro-text">
+											<header class="major">
+												<h2>Hi. We are <strong>DAPper.</strong></h2>
+											</header>
+											<p>
+												And this is our project, <strong>Forget the Red Tag</strong>. This is a project that aims to counter the negative propaganda being spread
+												against the youth organization Anakbayan, particularly through tweets containing misinformation against them through the insights we can
+												gain through data science.
+											</p>
+											<ul class="actions">
+												<li><a href="#overview" class="button">Learn More</a></li>
+											</ul>
+										</div>
 									</div>
-									<img src="images/logo.png" alt="" />
 								</div>
 							</section>
 
@@ -196,7 +200,8 @@
 									<li class="style2">
 										<div class="data-feature-category">
 											<span class="icon brands fa-twitter"></span>
-											<strong>Tweet Info</strong> Our data logs the tweet's contents, its metadata, and why we considered it to contain disinformation. 
+											<strong>Tweet Info</strong>
+											<span>Our data logs the tweet's contents, its metadata, and why we considered it to contain disinformation.</span>
 										</div>
 										<hr/>
 										<ul class="itemization">
@@ -211,7 +216,10 @@
 									<li class="style3">
 										<div class="data-feature-category">
 											<span class="icon solid fa-user"></span>
-											<strong>Account Info</strong> We also collected the account information of the respective posters of each tweet.
+											<strong>Account Info</strong>
+											<span>
+												We also collected the account information of the respective posters of each tweet.
+											</span>
 										</div>
 										<hr/>
 										<ul class="itemization">
@@ -228,7 +236,10 @@
 									<li class="style4">
 										<div class="data-feature-category">
 											<span class="icon solid fa-vote-yea"></span>
-											<strong>Political Info</strong> We added flags to indicate (a) whether the user is a Marcos supporter or Duterte supporter and (b) their attitude towards Anakbayan.
+											<strong>Political Info</strong>
+											<span>
+												We added flags to indicate the users' political affiliation and attitude towards Anakbayan.
+											</span>
 										</div>
 										<hr/>
 										<ul class="itemization">
@@ -246,17 +257,36 @@
 
 								<div class="long-text">
 									<p>
-										To start off, we trimmed off the columns of our data that we wouldn't be needing to perform any analyses. These were the "meta" columns - columns like "ID", "Review", "Group". We only needed them for collaboration in the classroom.
+										To start off, we trimmed off the columns of our data that we wouldn't be needing to perform any analyses. These were the "meta" columns - columns like "ID", "Review", "Group". 
+										We only needed them for collaboration in the classroom.
 									</p>
 									<p>
-										Then, we cleaned up the data by going through all the null values. In particular, though, we didn't have to handle <em>all</em> null values because not all values are required nor available. For example, a Twitter account is not required to have a Location or an Account bio, which would mean those fields would be null in the dataset and that's normal. So in our inital search, only the following columns had null values that needed to be filled: Account name, Content type, Likes, Replies, Quote Tweets, and Explanation for the political stance. These values were re-checked and filled in place.
+										Then, we cleaned up the data by going through all the null values. In particular, though, we didn't have to handle <em>all</em> null values because not all values are required
+										nor available. For example, a Twitter account is not required to have a Location or an Account bio, which would mean those fields would be null in the dataset and that's normal.
+										So in our inital search, only the following columns had null values that needed to be filled: Account name, Content type, Likes, Replies, Quote Tweets, and Explanation for the
+										political stance. These values were re-checked and filled in place.
 									</p>
 									<p>
-										We also had to go through all the invalid entries. We had a problem with the Date posted field in particular. With <code>datetime</code> though, we standardized the entire column to be datetime objects instead of strings.
+										We also had to go through all the invalid entries. We had a problem with the Date posted field in particular. With <code>datetime</code> though, we standardized the entire
+										column to be datetime objects instead of strings. Additionally, we decided to narrow the scope of our dataset to only tweets from 2020-2022, removing tweets that were posted
+										before 2020.
 									</p>
 									<p>
-										Lastly, since our dataset had the values for political affiliation (<code>Marcos supporter</code> or <code>Duterte supporter</code>) as <code>boolean</code> values,
+										Since our dataset had the values for political affiliation (Marcos supporter or Duterte supporter) and presence of red-tagging in the tweet as <code>boolean</code> values,
 										we encoded our data to instead read these values as <code>1</code> for <code>True</code> and <code>0</code> for <code>False</code>.
+									</p>
+									<p>
+										Lastly, in order to prepare our dataset for the Chi-square test for independence, we created four mutually exclusive columns indicating their political affiliation. We initially
+										tagged our data by checking both 'Marcos supporter' and 'Duterte supporter' columns if the user supports both, but since this is incompatible with one of the core assumptions
+										of the Chi-square test, it was necessary to create these columns. These columns are also categorically encoded with <code>True</code>:<code>1</code> and <code>False</code>:<code>0</code>.
+										These columns are:
+
+										<ol>
+											<li><code>supports_marcos_only</code></li>
+											<li><code>supports_duterte_only</code></li>
+											<li><code>supports_both</code></li>
+											<li><code>supports_neither</code></li>
+										</ol>
 									</p>
 								</div>
 

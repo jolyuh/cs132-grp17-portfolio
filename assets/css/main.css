@@ -2835,6 +2835,17 @@ input, select, textarea {
 					}
 
 		}
+
+/* Introduction */
+	#intro .content {
+		display: flex;
+		flex-direction: row;
+	}
+
+	#intro .content .intro-text {
+		padding-left: 5em;
+	}
+
 	
 	/* Problem Formulation */
 
@@ -2842,16 +2853,6 @@ input, select, textarea {
 		text-align: justify;
 		padding-left: 2em;
 		padding-right: 2em;
-	}
-
-	ul {
-		text-align: justify;
-		padding-left: 3em;
-		padding-right: 2em;
-	}
-
-	li ul {
-		list-style-type: circle;
 	}
 
 	#problem-formulation .long-text p {
@@ -2923,6 +2924,17 @@ input, select, textarea {
 
 		}
 
+/* Data */
+	#data ul {
+		text-align: justify;
+		padding-left: 3em;
+		padding-right: 2em;
+	}
+
+	#data li ul {
+		list-style-type: circle;
+	}
+
 /* Statistics */
 
 	.statistics {
@@ -2932,7 +2944,7 @@ input, select, textarea {
 		display: flex;
 		width: 100%;
 		margin: 0 0 0 0;
-		padding: 0;
+		padding: 0 0 1em 0;
 		list-style: none;
 		cursor: default;
 	}
@@ -2978,10 +2990,13 @@ input, select, textarea {
 			}
 
 			.statistics li .data-feature-category {
-				min-height: 40%;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+			}
+
+			.statistics li .data-feature-category span {
+				font-size: 0.9em;
 			}
 
 			.statistics li:first-child {
