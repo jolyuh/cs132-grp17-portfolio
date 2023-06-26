@@ -3067,6 +3067,20 @@ input, select, textarea {
 		padding: 0.15em 0;
 	}
 	
+/* Team */
+
+#team img {
+	height:8em;
+}
+
+#team .team-member {
+	padding: 1.2em;
+}
+
+#team a {
+	margin-right: 1em;
+}
+
 /* Spotlight */
 
 	.spotlight {
