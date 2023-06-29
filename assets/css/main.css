@@ -2938,7 +2938,7 @@ input, select, textarea {
 		}
 
 /* Data */
-	#data ul {
+	#data ul, #conclusion ul {
 		text-align: justify;
 		padding-left: 3em;
 		padding-right: 2em;
