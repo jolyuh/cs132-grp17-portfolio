@@ -307,14 +307,14 @@
 									<h2>Let's talk about our data science methodology.</h2>
 								</header>
 								<div class="long-text">
-									<p>For our statistical, we chose the <strong>chi-square test for independence</strong>. Our hypothesis deals with categorical (i.e. non-numerical) data, thus we needed a non-parametric test to show if there is a relationship between the red-tagging of tweets and the political stance of the tweeter.</p>
-									<p>The test requires a few things to be valid [<a href="https://www.jmp.com/en_ph/statistics-knowledge-portal/chi-square-test/chi-square-test-of-independence.html">11</a>], and we'll explain how we fulfill these requirements:</p>
+									<p>To test our hypotheses, we chose the <strong>chi-square test for independence</strong>. Our hypothesis deals with categorical (i.e. non-numerical) data, thus we needed a non-parametric test to show if there is a relationship between the red-tagging of tweets and the political stance of the tweeter.</p>
+									<p>The test requires a few things to be valid [<a href="https://www.jmp.com/en_ph/statistics-knowledge-portal/chi-square-test/chi-square-test-of-independence.html">11</a>, <a href="https://libguides.library.kent.edu/spss/chisquare">12</a>]:</p>
 
 									<p>
 										<ul>
-											<li>"Data values that are a <strong>simple random sample</strong> from the population of interest" - We did what was possible within our power to randomly sample tweets from 2020 to 2022; in phase 2 we had collected thousands of tweets from that time frame then selected random tweets to reach 252 total tweets. We are however limited by the Twitter search algorithm and Twitter's search API.</li>
-											<li>"Two <strong>categorical or nominal</strong> variables." - We are indeed using categorical variables; the only quantitative value is the count of each value. </li>
-											<li>"For each combination of the levels of the two variables, we need at least five expected values."</li>
+											<li>We are using <strong>categorical variables</strong>; we are working at nominal levels, comparing the presence of red-tagging in a tweet with the political stances of each tweeter.</li>
+											<li>We did what was possible within our power to <strong>randomly sample tweets</strong> from 2020 to 2022; in phase 2 we had collected thousands of tweets from that time frame then selected random tweets to reach 252 total tweets. We are however limited by the Twitter search algorithm and Twitter's search API.</li>
+											<li>We have a <strong>relatively large sample size</strong>; at 252 tweets, we expect to see at least one of each combination of red-tagging and political stance with most of them having at least five.</li>
 										</ul>
 									</p>
 
@@ -374,6 +374,46 @@
 										The results above show that we can reject the null hypothesis for those that support Duterte only, those that support both Marcos and Duterte, and those that support neither. This means that both Duterte-only and Marcos-Duterte supporters are highly likely to red-tag Anakbayan, while supporters of neither are highly unlikely to do so. As for those who support Marcos only, we weren't able to obtain a statistically significant result, likely because the dataset contained only 10 samples from Marcos-only supporters.
 									</p>
 
+								</div>
+								<h3>Data Modelling</h3>
+								<div class="long-text">
+
+									<p>	
+										We know that many of our tweets involve red-tagging, but we wanted to know more about how people were talking about Anakbayan. We performed Topic Clustering to find out the top topics that were being talked about in our dataset. We first tokenized our data using the ntlk module's natural language processing features in order to use machine learning to conduct topic clustering via latent dirichlet allocation (LDA) via scikit-learn.
+									</p>
+
+									<p>
+										We experimented with the number of topics we used during modelling, seeing what would give us a good image of the topics in our dataset. 
+									</p>
+
+									<!-- 3 TOPICS -->
+									<iframe width="900" height="620" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/24.embed"></iframe>
+									<p>
+										We first tried three topics. With three topics, there is plenty of overlap between keywords without much to say about each individual topic.
+									</p>
+									
+									<!-- 4 TOPICS -->
+									<iframe width="900" height="620" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/26.embed"></iframe>
+									<p>
+										We then tried four topics. With four topics, the topics are more distinguishable, but the clusters are spread out. This can be seen especially in topic 1 with some dots that are closer to other topics than topic 1 itself.
+									</p>
+
+									<!-- 5 TOPICS -->
+									<iframe width="900" height="625" frameborder="0" scrolling="no" src="//plotly.com/~gparagas/29.embed"></iframe>
+									<p>
+										We settled on five topics. With five, we see an improvement from four topics where the topics have distinguishing features with more compact topic clusters. This gives us an overview of the topics in our dataset.
+
+										<ul>
+											<li><strong>Topic 1</strong>: This topic mentions Student Christian Movement of the Philippines - UPLB (scmp_uplb) and National Union of Students of the Philippines (nusphilippines) which means that many tweets talk about Anakbayan <strong>together with student organizations</strong>. </li>
+											<li><strong>Topic 2</strong>: This topic shows that many tweets call Anakbayan and its activist activities <strong>terrorists/terrorism</strong>. </li>
+											<li><strong>Topic 3</strong>: This topic shows many tweets also call Anakbayan <strong>communist</strong> and fronts for communist groups. </li>
+											<li><strong>Topic 4</strong>: This topic shows that many tweets talk about Anakbayan together with <strong>youth organizations</strong> or partylists. It also covers tweets that call Anakbayan a partylist (which it is not), perhaps conflating it with the Akbayan Partylist. </li>
+											<li><strong>Topic 5</strong>: This topic shows many tweets talk about Anakbayan together with <strong>Kabataan and Bayan Muna partylists</strong>, which are from the Makabayan bloc. </li>
+										</ul>
+
+										Scattered among the topics is the keyword front which is used in many tweets in general that call Anakbayan a front for the CPP-NPA. 
+									</p>
+								
 								</div>
 								<footer class="major">
 									<ul class="actions special">
